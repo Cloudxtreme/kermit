@@ -1,9 +1,10 @@
-syntax: glob
-
 *~
 dist
+bin/*
+.eggs
 build
 *.py[co]
 coverage
 .coverage*
 *.egg-info
+*/version.py
