@@ -21,8 +21,8 @@ from rpython.rlib.streamio import open_file_as_stream
 
 import kermit
 from kermit import bytecode
-from kermit.parser import parse
 from kermit.compiler import Compiler
+from kermit.parser import parse, LexerError, ParseError
 
 from rlib.rreadline import readline
 
@@ -115,7 +115,14 @@ class Interpreter(object):
             except EOFError:
                 break
 
-            self.runstring(s)
+            try:
+                self.runstring(s)
+            except LexerError as e:
+                print "LexerError: ", e
+            except ParseError as e:
+                print "ParseError: ", e
+            except Exception as e:
+                print e
 
     def run(self, bc):  # noqa
         frame = self.frame

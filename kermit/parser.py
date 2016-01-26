@@ -4,6 +4,8 @@
 import py
 
 from rpython.rlib.parsing.ebnfparse import parse_ebnf, make_parse_function
+from rpython.rlib.parsing.deterministic import LexerError
+from rpython.rlib.parsing.parsing import ParseError
 
 
 from kermit import kermitdir
